@@ -1,0 +1,107 @@
+
+<html>
+<head>
+<style>
+
+body
+{
+  font: 12px verdana, "Bitstream Vera Sans", geneva, arial, helvetica, helve, sans-serif;
+  line-height: 160%;
+}
+
+div.test
+{
+  margin: 5px;
+  padding: 5px;
+  border: solid black 1px;
+  background: lightgray;
+}
+
+div.success
+{
+  background: #CCFFCC;
+  border: solid #66AA66 1px;
+}
+
+div.error, div.failure
+{
+  background: #FFCCCC;
+  border: solid #AA6666 1px;
+}
+
+span.label
+{
+  font-weight: bold;
+}
+
+pre
+{
+  background: white;
+  padding: 5px;
+  border:  solid black 1px;
+  display: block;
+  overflow: auto;
+}
+</style>
+
+<script>
+function toggle(name){
+    var elem = document.getElementById(name)
+    if (elem) {
+        if (elem.style.display=="none"){
+            elem.style.display="block"
+        } else {
+            elem.style.display="none"
+        }
+    }
+}
+</script>
+</head>
+<body>
+
+<div class='test success'>
+<div><span class='label'>ID:</span> functional.test_toolbox.TestForTool_necat.test_tool_000000</div>
+<div><span class='label'>Description:</span> ( necat ) > Test-1</div>
+<div><span class='label'>Status:</span> success</div>
+</div>
+<div class='test failure'>
+<div><span class='label'>ID:</span> functional.test_toolbox.TestForTool_necat.test_tool_000001</div>
+<div><span class='label'>Description:</span> ( necat ) > Test-2</div>
+<div><span class='label'>Status:</span> failure</div>
+<div><span class='label'>Exception:</span> <a href="javascript:toggle('exception_2')">...</a></div>
+<div id='exception_2' style='display: none'><pre class='exception'>Traceback (most recent call last):
+
+  File &quot;/usr/lib/python3.8/unittest/case.py&quot;, line 60, in testPartExecutor
+    yield
+
+  File &quot;/usr/lib/python3.8/unittest/case.py&quot;, line 676, in run
+    self._callTestMethod(testMethod)
+
+  File &quot;/usr/lib/python3.8/unittest/case.py&quot;, line 633, in _callTestMethod
+    method()
+
+  File &quot;/tmp/tmpz7tm2txe/galaxy-dev/test/functional/test_toolbox.py&quot;, line 98, in test_tool
+    self.do_it(tool_version=tool_version, test_index=test_index)
+
+  File &quot;/tmp/tmpz7tm2txe/galaxy-dev/test/functional/test_toolbox.py&quot;, line 35, in do_it
+    verify_tool(tool_id, self.galaxy_interactor, resource_parameters=resource_parameters, test_index=test_index, tool_version=tool_version, register_job_data=register_job_data)
+
+  File &quot;/tmp/tmpz7tm2txe/galaxy-dev/lib/galaxy/tool_util/verify/interactor.py&quot;, line 1096, in verify_tool
+    stage_data_in_history(
+
+  File &quot;/tmp/tmpz7tm2txe/galaxy-dev/lib/galaxy/tool_util/verify/interactor.py&quot;, line 80, in stage_data_in_history
+    upload_wait = galaxy_interactor.stage_data_async(test_data,
+
+  File &quot;/tmp/tmpz7tm2txe/galaxy-dev/lib/galaxy/tool_util/verify/interactor.py&quot;, line 414, in stage_data_async
+    file_content = self.test_data_download(tool_id, fname, is_output=False, tool_version=tool_version)
+
+  File &quot;/tmp/tmpz7tm2txe/galaxy-dev/lib/galaxy/tool_util/verify/interactor.py&quot;, line 360, in test_data_download
+    raise AssertionError(f&quot;Test input file ({filename}) cannot be found.&quot;)
+
+AssertionError: Test input file (test1_head.fastq) cannot be found.
+</pre></div>
+</div>
+
+</body>
+</html>
+
